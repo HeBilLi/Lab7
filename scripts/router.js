@@ -2,10 +2,84 @@
 
 export const router = {};
 
+
+
 /**
  * Changes the "page" (state) that your SPA app is currently set to
  */
-router.setState = function() {
+router.setState = function (inputString, backButton) {
+
+  // history.pushState({page: 2}, "JounalEntry${index}", "index${index}")
+
+  if (inputString == "Settings" && !backButton) {
+    history.pushState({ page: "Settings" }, "Settings", "http://127.0.0.1:5500/#settings");
+    document.querySelector("body").classList.remove("single-entry");
+    document.querySelector("body").classList.remove("main");
+
+
+    document.querySelector("body").classList.add("settings");
+    document.querySelector("h1").textContent = "Settings";
+
+  } else if (inputString == "MainPage" && !backButton) {
+
+    history.pushState({ page: "MainPage" }, "MainPage", "http://127.0.0.1:5500");
+    document.querySelector("body").classList.remove("settings");
+    document.querySelector("body").classList.remove("single-entry");
+    document.querySelector("body").classList.add("main");
+
+
+    document.querySelector("h1").textContent = "Journal Entries";
+
+  } else if (inputString.startsWith('Entry') && !backButton) {
+    document.querySelector("body").classList.remove("settings");
+    document.querySelector("body").classList.remove("main");
+
+
+    var entries = document.querySelectorAll('journal-entry');
+    let index = parseInt(inputString.substring(5));
+
+    history.pushState({ page: inputString }, "inputString", "http://127.0.0.1:5500/#" + inputString);
+    let entryPageOld = document.querySelector('entry-page');
+    entryPageOld.parentNode.removeChild(entryPageOld);
+    let entryPage = document.createElement('entry-page');
+    document.querySelector("body").appendChild(entryPage);
+    entryPage.entry = entries[index].entry;
+    document.querySelector("body").classList.add("single-entry");
+    document.querySelector("h1").textContent = inputString.substring(0, 5) + " " + index;
+
+  } else if (inputString == "Settings" && backButton) {
+    document.querySelector("body").classList.remove("single-entry");
+
+    document.querySelector("body").classList.add("settings");
+    document.querySelector("h1").textContent = "Settings";
+
+  } else if (inputString == "MainPage" && backButton) {
+
+    document.querySelector("body").classList.remove("settings");
+    document.querySelector("body").classList.remove("single-entry");
+    document.querySelector("h1").textContent = "Journal Entries";
+
+  } else if (inputString.startsWith('Entry') && backButton) {
+    document.querySelector("body").classList.remove("settings");
+
+    console.log(inputString);
+    var entries = document.querySelectorAll('journal-entry');
+    let index = parseInt(inputString.substring(5));
+    let entryPageOld = document.querySelector('entry-page');
+    entryPageOld.parentNode.removeChild(entryPageOld);
+    let entryPage = document.createElement('entry-page');
+    document.querySelector("body").appendChild(entryPage);
+    entryPage.entry = entries[index].entry;
+    document.querySelector("body").classList.add("single-entry");
+    document.querySelector("h1").textContent = inputString;
+
+  }
+  // if(inputString == "entry"){
+  //   history.pushState({page: 1}, "Settings", "http://127.0.0.1:5500/#settings");
+  //   document.querySelector()
+  //   //body .addChild (history)
+  // }
+
   /**
    * - There are three states that your SPA app will have
    *    1. The home page
