@@ -22,6 +22,8 @@ if ('serviceWorker' in navigator) {
 
 
 addEventListener('DOMContentLoaded', () => {
+
+  setState("MainPage",false);
   fetch('https://cse110lab6.herokuapp.com/entries')
     .then(response => response.json())
     .then(entries => {

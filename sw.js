@@ -4,9 +4,7 @@
 //   - One for installation
 var CACHE_NAME = 'my-site-cache-v1';
 var urlsToCache = [
-  '/',
-  '/styles/main.css',
-  '/script/main.js'
+  'https://cse110lab6.herokuapp.com/entries'
 ];
 
 self.addEventListener('install', function(event) {
@@ -22,17 +20,15 @@ self.addEventListener('install', function(event) {
 
 
 //   - One for activation ( check out MDN's clients.claim() for this step )
-self.addEventListener('activate', event => {
-    event.waitUntil(clients.claim()); 
-});
-self.addEventListener('activate', function(event) {
 
-    var cacheAllowlist = ['pages-cache-v1', 'blog-posts-cache-v1'];
+self.addEventListener('activate', function(event) {
+    event.waitUntil(clients.claim()); 
+    var cacheAllowlist = ['my-site-cache-v1'];
   
     event.waitUntil(
       
       caches.keys().then(function(cacheNames) {
-        
+        // self.clients.claim();
         return Promise.all(
           cacheNames.map(function(cacheName) {
             if (cacheAllowlist.indexOf(cacheName) === -1) {
@@ -53,7 +49,8 @@ self.addEventListener('fetch', function(event) {
           if (response) {
             return response;
           }
-  
+
+          console.log("Check");
           return fetch(event.request).then(
             function(response) {
               // Check if we received a valid response
@@ -74,3 +71,4 @@ self.addEventListener('fetch', function(event) {
         })
       );
   });
+
