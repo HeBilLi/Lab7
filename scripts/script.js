@@ -10,7 +10,6 @@ let index=1;
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('./sw.js').then(function(registration) {
-      
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
     }, function(err) {
@@ -37,9 +36,9 @@ addEventListener('DOMContentLoaded', () => {
           setState(`Entry${i}`,false);
         });
       });
-    
+
     });
-    
+
 });
 
 
@@ -65,4 +64,3 @@ window.addEventListener('popstate', function(event) {
 
 
 }, true);
-
