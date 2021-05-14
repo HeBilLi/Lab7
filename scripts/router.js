@@ -9,8 +9,6 @@ export const router = {};
  */
 router.setState = function (inputString, backButton) {
 
-  // history.pushState({page: 2}, "JounalEntry${index}", "index${index}")
-
   if (inputString == "Settings" && !backButton) {
     // history.pushState({ page: "Settings" }, "Settings", "https://hebilli.github.io/Lab7/#settings");
     history.pushState({ page: "Settings" }, "Settings", "http://127.0.0.1:5500/#settings");
