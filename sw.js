@@ -49,8 +49,6 @@ self.addEventListener('fetch', function(event) {
           if (response) {
             return response;
           }
-
-          console.log("Check");
           return fetch(event.request).then(
             function(response) {
               // Check if we received a valid response
