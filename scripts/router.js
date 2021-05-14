@@ -12,8 +12,8 @@ router.setState = function (inputString, backButton) {
   // history.pushState({page: 2}, "JounalEntry${index}", "index${index}")
 
   if (inputString == "Settings" && !backButton) {
-    history.pushState({ page: "Settings" }, "Settings", "https://hebilli.github.io/Lab7/#settings");
-    // history.pushState({ page: "Settings" }, "Settings", "http://127.0.0.1:5500/#settings");
+    // history.pushState({ page: "Settings" }, "Settings", "https://hebilli.github.io/Lab7/#settings");
+    history.pushState({ page: "Settings" }, "Settings", "http://127.0.0.1:5500/#settings");
 
     document.querySelector("body").classList.remove("single-entry");
     document.querySelector("body").classList.remove("main");
@@ -24,8 +24,8 @@ router.setState = function (inputString, backButton) {
 
   } else if (inputString == "MainPage" && !backButton) {
 
-    history.pushState({ page: "MainPage" }, "MainPage", "https://hebilli.github.io/Lab7/");
-    // history.pushState({ page: "MainPage" }, "MainPage", "http://127.0.0.1:5500/");
+    // history.pushState({ page: "MainPage" }, "MainPage", "https://hebilli.github.io/Lab7/");
+    history.pushState({ page: "MainPage" }, "MainPage", "http://127.0.0.1:5500/");
 
     document.querySelector("body").classList.remove("settings");
     document.querySelector("body").classList.remove("single-entry");
@@ -42,8 +42,8 @@ router.setState = function (inputString, backButton) {
     var entries = document.querySelectorAll('journal-entry');
     let index = parseInt(inputString.substring(5));
 
-    history.pushState({ page: inputString }, "inputString", "https://hebilli.github.io/Lab7/#" + inputString);
-    // history.pushState({ page: inputString }, "inputString", "http://127.0.0.1:5500/#" + inputString);
+    // history.pushState({ page: inputString }, "inputString", "https://hebilli.github.io/Lab7/#" + inputString);
+    history.pushState({ page: inputString }, "inputString", "http://127.0.0.1:5500/#" + inputString);
 
     let entryPageOld = document.querySelector('entry-page');
     entryPageOld.parentNode.removeChild(entryPageOld);
