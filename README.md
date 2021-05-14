@@ -1,5 +1,8 @@
 # Lab7_Solution
 
-### 1a
-Link to the website: https://hebilli.github.io/Lab7/
+### Partner Names:
+Beilei He, Tony Liu
+
+### Link to the website: 
+https://hebilli.github.io/Lab7/
 
